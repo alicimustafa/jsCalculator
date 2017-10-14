@@ -6,9 +6,21 @@ $(document).ready(function(){
 
   $('.operator').click(handleOperator);
   $('.number').click(hadleNumber);
+  $(document).keypress(handleKeypress);
 
+  function handleKeypress(ev){
+    if(!isNaN(ev.key)){
+      console.log(ev.key);
+      if(newEntry){
+        $('#display').text("");
+        newEntry = false;
+        noDecimal = true;
+      }
+      var screenVal = $('#display').text();
+      $('#display').text(screenVal + ev.key);
+    }
+  }
   function hadleNumber() {
-    console.log(newEntry);
     if(newEntry){
       $('#display').text("");
       newEntry = false;
