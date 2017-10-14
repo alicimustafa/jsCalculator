@@ -10,7 +10,6 @@ $(document).ready(function(){
 
   function handleKeypress(ev){
     if(!isNaN(ev.key)){
-      console.log(ev.key);
       if(newEntry){
         $('#display').text("");
         newEntry = false;
@@ -111,7 +110,6 @@ $(document).ready(function(){
         newEntry = true;
         noDecimal = true;
         break;
-
     }
   }
   function addNumber(){
