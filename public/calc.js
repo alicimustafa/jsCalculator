@@ -1,16 +1,21 @@
 $(document).ready(function(){
   var numbers = [];
   var operations = [];
+  var newEntry = true;
+
   $('.operator').click(handleOperator);
   $('.number').click(hadleNumber);
 
   function hadleNumber() {
-    console.log(this.id);
+    console.log(newEntry);
+    if(newEntry){
+      $('#display').text("");
+      newEntry = false;
+    }
     var screenVal = $('#display').text();
     $('#display').text(screenVal + this.id);
   }
   function handleOperator() {
-    console.log(this.id);
     switch (this.id) {
       case 'clear':
         $('#display').text("");
@@ -41,21 +46,21 @@ $(document).ready(function(){
         addNumber();
         operations.push("=");
         runOperations();
+        numbers = [];
+        operations = [];
+        newEntry = true;
         break;
 
     }
   }
   function addNumber(){
     numbers.push(parseInt($('#display').text()));
-    console.log(numbers);
   }
   function runOperations(){
     var total = numbers[0];
-    console.log(total);
     for (var i = 0; i < numbers.length-1; i++) {
       total = doMath(total, numbers[i+1],operations[i]);
     }
-    console.log(total);
     $('#display').text(total);
   }
 
