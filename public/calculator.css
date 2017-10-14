@@ -1,0 +1,33 @@
+td {
+  border-radius: 5px;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 1px 1px;
+}
+table {
+  border: 2px;
+  border-radius: 5px;
+  width: 120px;
+  background-color: #d1d1e0;
+}
+
+.number {
+  background-image: linear-gradient(#ff6666, #990000);
+}
+
+.operator {
+  background-image: linear-gradient(#4d88ff, #003399);
+}
+
+.other {
+  background-image: linear-gradient(#53ff1a, #1a6600);
+}
+
+#display {
+  background-color: #fff;
+  color: #000;
+  text-align: right;
+}
