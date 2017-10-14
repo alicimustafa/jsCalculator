@@ -2,6 +2,7 @@ $(document).ready(function(){
   var numbers = [];
   var operations = [];
   var newEntry = true;
+  var noDecimal = true;
 
   $('.operator').click(handleOperator);
   $('.number').click(hadleNumber);
@@ -11,6 +12,7 @@ $(document).ready(function(){
     if(newEntry){
       $('#display').text("");
       newEntry = false;
+      noDecimal = true;
     }
     var screenVal = $('#display').text();
     $('#display').text(screenVal + this.id);
@@ -24,23 +26,30 @@ $(document).ready(function(){
         break;
       case 'divide':
         addNumber();
-        $('#display').text("");
+        newEntry = true;
         operations.push("/")
         break;
       case 'multiply':
         addNumber();
-        $('#display').text("");
+        newEntry = true;
         operations.push("*");
         break;
       case 'subtract':
         addNumber();
-        $('#display').text("");
+        newEntry = true;
         operations.push("-");
         break;
       case 'add':
         addNumber();
-        $('#display').text("");
+        newEntry = true;
         operations.push("+");
+        break;
+      case 'decimal':
+        if(!newEntry && noDecimal){
+          var screenVal = $('#display').text();
+          $('#display').text(screenVal + ".");
+          noDecimal = false;
+        }
         break;
       case 'equals':
         addNumber();
@@ -49,12 +58,13 @@ $(document).ready(function(){
         numbers = [];
         operations = [];
         newEntry = true;
+        noDecimal = true;
         break;
 
     }
   }
   function addNumber(){
-    numbers.push(parseInt($('#display').text()));
+    numbers.push(parseFloat($('#display').text()));
   }
   function runOperations(){
     var total = numbers[0];
