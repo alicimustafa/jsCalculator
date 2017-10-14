@@ -18,6 +18,45 @@ $(document).ready(function(){
       }
       var screenVal = $('#display').text();
       $('#display').text(screenVal + ev.key);
+    } else {
+      switch (ev.key) {
+        case '/':
+          addNumber();
+          newEntry = true;
+          operations.push("/")
+          break;
+        case '*':
+          addNumber();
+          newEntry = true;
+          operations.push("*");
+          break;
+        case '-':
+          addNumber();
+          newEntry = true;
+          operations.push("-");
+          break;
+        case '+':
+          addNumber();
+          newEntry = true;
+          operations.push("+");
+          break;
+        case '.':
+          if(!newEntry && noDecimal){
+            var screenVal = $('#display').text();
+            $('#display').text(screenVal + ".");
+            noDecimal = false;
+          }
+          break;
+        case '=':
+          addNumber();
+          operations.push("=");
+          runOperations();
+          numbers = [];
+          operations = [];
+          newEntry = true;
+          noDecimal = true;
+          break;
+        }
     }
   }
   function hadleNumber() {
